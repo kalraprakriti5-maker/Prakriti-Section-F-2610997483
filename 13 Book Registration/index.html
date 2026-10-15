@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Readers' Haven – Book Registration & Order Form</title>
+</head>
+<body>
+    <h2>Readers' Haven - Book Registration & Order Form</h2>
+    <form action="order_success.html" method="post" target="_blank">
+        <input type="hidden" name="order_type" value="Readers Haven Book Order">
+
+        <label for="cust_name">Customer Name:</label><br>
+        <input type="text" id="cust_name" name="customer_name" placeholder="Enter your name" required><br><br>
+
+        <label for="cust_email">Email Address:</label><br>
+        <input type="email" id="cust_email" name="customer_email" placeholder="enter email" required><br><br>
+
+        <label for="cust_mobile">Mobile Number:</label><br>
+        <input type="tel" id="cust_mobile" name="customer_mobile" placeholder="phone number" required><br><br>
+
+        <label for="cust_age">Age:</label><br>
+        <input type="number" id="cust_age" name="customer_age" min="10"><br><br>
+
+        <label for="cust_pass">Password:</label><br>
+        <input type="password" id="cust_pass" name="customer_password" required><br><br>
+
+        <label for="delivery_date">Delivery Date:</label><br>
+        <input type="date" id="delivery_date" name="delivery_date"><br><br>
+
+        <label for="delivery_time">Preferred Delivery Time:</label><br>
+        <input type="time" id="delivery_time" name="delivery_time"><br><br>
+
+        <label for="category">Favorite Book Category:</label><br>
+        <select id="category" name="book_category" required>
+            <option value="">-- Choose Category --</option>
+            <option value="Fiction">Fiction</option>
+            <option value="Science">Science</option>
+            <option value="History">History</option>
+            <option value="Childrens Books">Children's Books</option>
+        </select><br><br>
+
+        <label for="book_title">Book Title:</label><br>
+        <input type="text" id="book_title" name="book_title" placeholder="Book name"><br><br>
+
+        <label for="qty">Quantity:</label><br>
+        <input type="number" id="qty" name="quantity" min="1" value="1"><br><br>
+
+        <label>Preferred Payment Method:</label><br>
+        <input type="radio" id="cod" name="payment_method" value="Cash on Delivery" checked>
+        <label for="cod">Cash on Delivery</label>
+        <input type="radio" id="online" name="payment_method" value="Online Payment">
+        <label for="online">Online Payment</label><br><br>
+
+        <label>Additional Services:</label><br>
+        <input type="checkbox" id="gift" name="services" value="Gift Wrapping">
+        <label for="gift">Gift Wrapping</label><br>
+        <input type="checkbox" id="bookmark" name="services" value="Bookmark">
+        <label for="bookmark">Bookmark</label><br>
+        <input type="checkbox" id="express" name="services" value="Express Delivery">
+        <label for="express">Express Delivery</label><br>
+        <input type="checkbox" id="card" name="services" value="Greeting Card">
+        <label for="card">Greeting Card</label><br><br>
+
+        <label for="ref_doc">Upload Reference Image / Document:</label><br>
+        <input type="file" id="ref_doc" name="reference_file" accept="image/*,.pdf"><br><br>
+
+        <label for="del_address">Delivery Address & Special Instructions:</label><br>
+        <textarea id="del_address" name="delivery_address" rows="5" cols="45" placeholder="Enter address and instructions"></textarea><br><br>
+
+        <button type="submit">Place Order</button>
+        <button type="reset">Reset Form</button>
+    </form>
+</body>
+</html>

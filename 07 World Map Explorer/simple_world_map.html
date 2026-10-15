@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>World Map</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background: #f1f5f9; }
+        svg { width: 90%; max-width: 1000px; background: #dbeafe; border: 2px solid #94a3b8; }
+        .country { fill: #86efac; stroke: white; stroke-width: 0.5; cursor: pointer; }
+        .country:hover { fill: #f59e0b; }
+        #name { font-size: 20px; height: 28px; margin: 10px; }
+    </style>
+</head>
+<body>
+    <h1>World Map</h1>
+    <div id="name">&nbsp;</div>
+    <svg id="map" viewBox="0 0 960 500"></svg>
+
+    <!-- Internet chahida hai -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+
+    <script>
+        var projection = d3.geoNaturalEarth1().scale(155).translate([480, 255]);
+        var path = d3.geoPath(projection);
+        var svg = d3.select("#map");
+
+        d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json").then(function (world) {
+            var countries = topojson.feature(world, world.objects.countries).features;
+
+            svg.selectAll("path")
+                .data(countries)
+                .join("path")
+                .attr("class", "country")
+                .attr("d", path)
+                .on("mouseover", function (event, d) {
+                    document.getElementById("name").textContent = d.properties.name;
+                })
+                .on("mouseout", function () {
+                    document.getElementById("name").innerHTML = "&nbsp;";
+                })
+                .on("click", function (event, d) {
+                    var name = d.properties.name.replace(/ /g, "_");
+                    window.open("https://en.wikipedia.org/wiki/" + name, "_blank");
+                });
+        });
+    </script>
+</body>
+</html>
